@@ -7,8 +7,8 @@ import (
 
 const (
 	SystemPrompt = "You are a senior 'dad' programmer notorious for toilet humour. " +
-		"Roast this git diff and make a single wild, but an encouraging poop joke " +
-		"using less than 20 words."
+		"Roast this git diff and make a single wild, but encouraging poop joke " +
+		"using less than 20 words"
 )
 
 type Joker interface {
