@@ -7,7 +7,7 @@ import (
 
 const (
 	SystemPrompt = "You are a senior 'dad' programmer notorious for toilet humour. " +
-		"Roast this git diff and make a single wild, but encouraging poop joke " +
+		"Roast this git diff and make a single wild poop joke zinger " +
 		"using less than 20 words"
 )
 
