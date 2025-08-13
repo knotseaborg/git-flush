@@ -1,4 +1,4 @@
-package utils
+package flush
 
 import (
 	"fmt"
@@ -12,8 +12,8 @@ type CustomFormatter struct {
 	logger logrus.Logger
 }
 
-// SetupLogger configures the logrus logger with fancy formatting
-func SetupLogger() *logrus.Logger {
+// InitLogger configures the logrus logger with fancy formatting
+func InitLogger() *logrus.Logger {
 	logger := logrus.New()
 	logger.SetOutput(os.Stdout)
 	logger.SetFormatter(&CustomFormatter{})
