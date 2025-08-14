@@ -6,12 +6,14 @@ import (
 	"errors"
 	"io"
 	"net/http"
+	"time"
 )
 
 type LLMClient struct {
 	apiKey   string
 	model    string
 	endpoint string
+	timeout  int
 }
 
 type RequestPayload struct {
@@ -50,7 +52,7 @@ func (c *LLMClient) Complete(input string) (string, int, error) {
 
 func (c *LLMClient) MakeRequest(req *http.Request) (*ResponsePayload, error) {
 	// Make the request
-	client := &http.Client{}
+	client := &http.Client{Timeout: time.Duration(c.timeout) * time.Second}
 	resp, err := client.Do(req)
 	if err != nil {
 		logger.Error("Error making request: ", err)
@@ -121,5 +123,6 @@ func InitLLMClient() (*LLMClient, error) {
 		config.APIKey,
 		config.Model,
 		config.EndPoint,
+		5,
 	}, nil
 }
