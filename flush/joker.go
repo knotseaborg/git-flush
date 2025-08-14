@@ -52,6 +52,6 @@ func (j *ToiletJoker) MakeJoke(gitDiff string) {
 
 	fmt.Println(text)
 	fmt.Println("---")
-	fmt.Println("Pooped", tokensUsed, "tokens 💩\nConspitated for", endTime.Sub(startTime).Seconds(), "seconds 😏")
+	fmt.Printf("Pooped %d tokens 💩\nConspitated for %.2f seconds 😏\n", tokensUsed, endTime.Sub(startTime).Seconds())
 	fmt.Println("---")
 }
