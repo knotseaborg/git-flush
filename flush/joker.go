@@ -27,6 +27,10 @@ type ToiletJoker struct {
 }
 
 func (j *ToiletJoker) MakeJoke(gitDiff string) {
+	if gitDiff == "" {
+		fmt.Println("`git diff --cached` came back clean! Repo sat on the toilet for 10 minutes, nothing happened💨")
+		return
+	}
 	if len(gitDiff) > j.diffLimit {
 		fmt.Println("Woah! That's one mega-dump!😲 You just flushed a huge commit! 👏👏")
 		return

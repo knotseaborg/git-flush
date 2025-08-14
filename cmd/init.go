@@ -91,7 +91,7 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().BoolVarP(&dryRun, "dryrun", "d", false, "dry run git-flush without commit")
-	rootCmd.Flags().StringVarP(&commitMessage, "message", "m", "", "commit message")
+	rootCmd.Flags().BoolVarP(&dryRun, "dryrun", "d", false, "dry run without commit")
+	rootCmd.Flags().StringVarP(&commitMessage, "message", "m", "", "commits with message")
 	rootCmd.Flags().BoolVarP(&configMode, "config", "c", false, "edit config file")
 }
