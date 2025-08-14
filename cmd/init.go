@@ -31,7 +31,7 @@ Commits are like pooping, so do it as frequently as you can for healthy code rev
 			return
 		}
 		if commitMessage == "" {
-			logger.Warn("Commit message missing! Looks like you forgot to wipe the slate clean💩")
+			logger.Error("Oops... Commit message missing! Looks like you forgot to wipe the slate clean💩")
 		} else {
 			err := commitAndJoke(commitMessage)
 			if err != nil {
