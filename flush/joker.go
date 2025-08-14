@@ -14,11 +14,14 @@ type Joker interface {
 	MakeJoke(string)
 }
 
-func InitJoker() Joker {
-	client := InitLLMClient()
-
+func InitJoker() (Joker, error) {
+	client, err := InitLLMClient()
+	if err != nil {
+		logger.Error("Failed to initialize joker")
+		return nil, err
+	}
 	// diffLimit is set to prevent a massive surge of tokens to the LLM
-	return &ToiletJoker{client, config.DiffLimit}
+	return &ToiletJoker{client, config.DiffLimit}, nil
 }
 
 type ToiletJoker struct {

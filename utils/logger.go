@@ -18,6 +18,7 @@ func InitLogger() *logrus.Logger {
 	logger.SetOutput(os.Stdout)
 	logger.SetFormatter(&CustomFormatter{})
 	logger.SetLevel(logrus.DebugLevel) // Enable all log levels for demo
+	logger.SetReportCaller(true)
 	return logger
 }
 

@@ -13,7 +13,7 @@ import (
 var (
 	logger = utils.InitLogger()
 
-	config        = utils.InitConfig()
+	config        = utils.DefaultConfig()
 	commitMessage string
 	configMode    bool
 	dryRun        bool
@@ -33,8 +33,9 @@ Commits are like pooping, so do it as frequently as you can for healthy code rev
 		// User wants to test git-flush
 		if dryRun {
 			if err := joke(); err != nil {
-				logger.Error("Dry run failed! Better check the plumbing🛠️", err)
+				logger.Error("Dry run failed! Better check the plumbing🛠️")
 			}
+			logger.Info("Dry run succeeded! This is what your git-flush smells like🫢")
 			return
 		}
 		// User wants to commit
@@ -50,9 +51,12 @@ Commits are like pooping, so do it as frequently as you can for healthy code rev
 }
 
 func joke() error {
-	repo := flush.InitWrapper()
-	joker := flush.InitJoker()
-
+	repo := flush.InitRepoWrapper()
+	joker, err := flush.InitJoker()
+	if err != nil {
+		logger.Error("Poop joke connoisseur is in the toilet!😢")
+		return err
+	}
 	diff, err := repo.GetDiff()
 	if err != nil {
 		logger.Error("Looks like there's nothing to flush!😢")
@@ -63,8 +67,12 @@ func joke() error {
 }
 
 func commitAndJoke(message string) error {
-	repo := flush.InitWrapper()
-	joker := flush.InitJoker()
+	repo := flush.InitRepoWrapper()
+	joker, err := flush.InitJoker()
+	if err != nil {
+		logger.Error("Poop joke connoisseur is in the toilet!😢")
+		return err
+	}
 
 	diff, err := repo.GetDiff()
 	if err != nil {

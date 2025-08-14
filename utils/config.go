@@ -46,14 +46,11 @@ func (c *Config) Edit() error {
 
 	// Pre-fill the config file
 	if err := c.Load(); err != nil {
-		if data, err := yaml.Marshal(c); err != nil {
-			logger.Error("Failed to create default config file")
-			logger.Info("Manually create the config file")
-		} else {
-			// Save updated config
-			if err := os.WriteFile(path, data, 0o644); err != nil {
-				return fmt.Errorf("failed to save config: %w", err)
-			}
+		if !os.IsNotExist(err) {
+			logger.Error("Failed to read config file. Creating new config file ", err)
+		}
+		if err = c.write(path); err != nil {
+			logger.Error("Failed to edit config file")
 		}
 	}
 
@@ -82,16 +79,25 @@ func (c *Config) Load() error {
 	// Read config file
 	data, err := os.ReadFile(path)
 	if err != nil {
-		if os.IsNotExist(err) {
-			logger.Error("Config file not found. Use `git-flush --config` to manage configuration")
-		} else {
-			logger.Error("Failed to read config file: ", err)
-		}
 		return err
 	}
 	err = yaml.Unmarshal(data, c)
 	if err != nil {
 		logger.Error("Failed to unmarshal config data: ", err)
+	}
+	return nil
+}
+
+func (c *Config) write(path string) error {
+	if data, err := yaml.Marshal(c); err != nil {
+		logger.Error("Failed to create default config file")
+		logger.Info("Manually create the config file")
+		return err
+	} else {
+		// Save updated config
+		if err := os.WriteFile(path, data, 0o644); err != nil {
+			return fmt.Errorf("failed to save config: %w", err)
+		}
 	}
 	return nil
 }
@@ -122,15 +128,14 @@ func getConfigPath() (string, error) {
 	return "", errors.New("incompatible OS detected")
 }
 
-func InitConfig() *Config {
+// DefaultConfig returns a default config
+func DefaultConfig() *Config {
 	// Initialize with default values
 	config := &Config{
 		DiffLimit: 5000,
 		Model:     "gpt-4.1-nano",
 		EndPoint:  "https://api.openai.com/v1/responses",
 	}
-
-	_ = config.Load()
 
 	return config
 }

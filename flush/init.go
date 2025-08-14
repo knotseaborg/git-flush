@@ -7,12 +7,5 @@ import (
 
 var (
 	logger = utils.InitLogger()
-	config = utils.InitConfig()
+	config = utils.DefaultConfig()
 )
-
-func init() {
-	err := config.Load()
-	if err != nil {
-		logger.Error("Failed to initialize flush")
-	}
-}

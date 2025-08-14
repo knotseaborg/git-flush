@@ -3,6 +3,7 @@ package flush
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"io"
 	"net/http"
 )
@@ -106,13 +107,19 @@ func (c *LLMClient) MakeRequestPayload(input string) (*http.Request, error) {
 	return req, nil
 }
 
-func InitLLMClient() *LLMClient {
+func InitLLMClient() (*LLMClient, error) {
+	err := config.Load()
+	if err != nil {
+		logger.Error("Failed to initialize flush")
+		return nil, err
+	}
 	if config.APIKey == "" {
 		logger.Error("API Key not set in config file. Use `git-flush --config` to set your API Key")
+		return nil, errors.New("API Key not set")
 	}
 	return &LLMClient{
 		config.APIKey,
 		config.Model,
 		config.EndPoint,
-	}
+	}, nil
 }

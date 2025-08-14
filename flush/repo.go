@@ -9,7 +9,7 @@ type RepoWrapper interface {
 
 type GitWrapper struct{}
 
-func InitWrapper() RepoWrapper {
+func InitRepoWrapper() RepoWrapper {
 	return &GitWrapper{}
 }
 
