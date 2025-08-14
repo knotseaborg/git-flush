@@ -23,8 +23,12 @@
 Do your usual `git` stuff, but swap `git commit` for `git-flush`. Watch your code get roasted as it swirls down the drain! 😌
 
 ## Inspiration
-*Better Call Saul* and *Borderlands* collide in `git-flush`, a love letter to code and crap jokes. Why? Because coding’s too serious, and nothing screams “fun” like a toilet-flushing commit roasted by a snarky robot or a sleazy lawyer!
+*Better Call Saul* and *Borderlands* collide in `git-flush`, a tribute to code and crap jokes. Why? Because with AI getting so good, coding’s turning into a hobby! Nothing screams “fun” with code like a toilet-flushing commit roasted by a snarky robot or a sleazy lawyer!
 | Imagery | Description | Why It’s *Flush-Worthy* 🏆|
 |---------|-------------|-------------------------|
-| <img src="https://github.com/user-attachments/assets/91263629-7b55-4ff5-9a21-14259c72cda2" width="230"/> | *Better Call Saul*’s iconic toilet scene where Saul’s scheming takes a flush. | Sparks the cheeky, poop-themed roasts that make `git-flush` a hilarious command. |
+| <img src="https://github.com/user-attachments/assets/91263629-7b55-4ff5-9a21-14259c72cda2" width="230"/> | *Better Call Saul*’s iconic toilet scene! | Sparks the cheeky, poop-themed roasts that make `git-flush` a hilarious command. |
 | <img src="https://github.com/user-attachments/assets/2c722453-b4ec-43cd-92eb-c23fb3675b4b" width="230"/> | Claptrap, *Borderlands*’ loudmouthed robot with zero chill. | Delivers the over-the-top, snarky commentary that roasts your commits with turd-tastic flair. |
+
+<p align="center">
+  <img width="100" height="1024" alt="Handcrafted Code - circle" src="https://github.com/user-attachments/assets/425c2b59-15b6-47ef-8d38-c0347c037392" /><br/>For the Heck of it!
+</p>
