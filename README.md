@@ -22,9 +22,18 @@
 </p>
 
 ## Usage
-Do your usual `git` stuff, but swap `git commit` for `git-flush`. Watch your code get roasted as it swirls down the drain!
+Do your usual `git` stuff, but swap `git commit` for `git-flush`. Watch your code get roasted as it swirls down the drain! 
 
+```
+Usage:
+  git-flush [flags]
 
+Flags:
+  -c, --config           edit config file
+  -d, --dryrun           dry run without commit
+  -h, --help             help for git-flush
+  -m, --message string   commits with message
+```
 ## Inspiration
 *Better Call Saul* and *Borderlands* collide in `git-flush`, a tribute to code and crap jokes. Why? Because with AI getting so good, coding’s turning into a hobby! Nothing screams “fun” with code like a toilet-flushing commit roasted by a snarky robot or a sleazy lawyer!
 | Imagery | Description | Why It’s *Flush-Worthy* 🏆|
