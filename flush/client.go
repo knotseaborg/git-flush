@@ -107,6 +107,9 @@ func (c *LLMClient) MakeRequestPayload(input string) (*http.Request, error) {
 }
 
 func InitLLMClient() *LLMClient {
+	if config.APIKey == "" {
+		logger.Error("API Key not set in config file. Use `git-flush --config` to set your API Key")
+	}
 	return &LLMClient{
 		config.APIKey,
 		config.Model,

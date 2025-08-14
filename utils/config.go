@@ -68,6 +68,7 @@ func (c *Config) Edit() error {
 		return err
 	}
 
+	fmt.Println("Config edited — hope you brought toilet paper🧻")
 	return nil
 }
 

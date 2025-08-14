@@ -12,12 +12,11 @@ import (
 
 var (
 	logger = utils.InitLogger()
-	repo   = flush.InitWrapper()
-	joker  = flush.InitJoker()
 
 	config        = utils.InitConfig()
 	commitMessage string
 	configMode    bool
+	dryRun        bool
 )
 
 var rootCmd = &cobra.Command{
@@ -26,10 +25,19 @@ var rootCmd = &cobra.Command{
 	Long: `git-flush is the equivalent of "git commit"
 Commits are like pooping, so do it as frequently as you can for healthy code reviews and hilarious toilet humour!💩`,
 	Run: func(cmd *cobra.Command, args []string) {
+		// User wants to edit config
 		if configMode {
 			config.Edit()
 			return
 		}
+		// User wants to test git-flush
+		if dryRun {
+			if err := joke(); err != nil {
+				logger.Error("Dry run failed! Better check the plumbing🛠️", err)
+			}
+			return
+		}
+		// User wants to commit
 		if commitMessage == "" {
 			logger.Error("Oops... Commit message missing! Looks like you forgot to wipe the slate clean💩")
 		} else {
@@ -41,7 +49,23 @@ Commits are like pooping, so do it as frequently as you can for healthy code rev
 	},
 }
 
+func joke() error {
+	repo := flush.InitWrapper()
+	joker := flush.InitJoker()
+
+	diff, err := repo.GetDiff()
+	if err != nil {
+		logger.Error("Looks like there's nothing to flush!😢")
+		return err
+	}
+	joker.MakeJoke(diff)
+	return nil
+}
+
 func commitAndJoke(message string) error {
+	repo := flush.InitWrapper()
+	joker := flush.InitJoker()
+
 	diff, err := repo.GetDiff()
 	if err != nil {
 		logger.Error("Looks like there's nothing to flush!😢")
@@ -67,6 +91,7 @@ func Execute() {
 }
 
 func init() {
+	rootCmd.Flags().BoolVarP(&dryRun, "dryrun", "d", false, "dry run git-flush without commit")
 	rootCmd.Flags().StringVarP(&commitMessage, "message", "m", "", "commit message")
 	rootCmd.Flags().BoolVarP(&configMode, "config", "c", false, "edit config file")
 }
