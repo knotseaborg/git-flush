@@ -35,7 +35,7 @@ Flags:
   -m, --message string   commits with message
 ```
 ## Inspiration
-*Better Call Saul* and *Borderlands* collide in `git-flush`, a tribute to code and crap jokes. Why? Because with AI getting so good, coding’s turning into a hobby! Nothing screams “fun” with code like a toilet-flushing commit roasted by a snarky robot or a sleazy lawyer!
+*Better Call Saul* and *Borderlands* collide in `git-flush`, a tribute to code and crap jokes. Why? Nothing screams “fun” with code like a toilet-flushing commit roasted by a snarky robot or a sleazy lawyer!
 | Imagery | Description | Why It’s *Flush-Worthy* 🏆|
 |---------|-------------|-------------------------|
 | <img src="https://github.com/user-attachments/assets/91263629-7b55-4ff5-9a21-14259c72cda2" width="230"/> | *Better Call Saul*’s iconic toilet scene! | Sparks the cheeky, poop-themed roasts that make `git-flush` a hilarious command. |
